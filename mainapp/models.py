@@ -5,3 +5,6 @@ class Stock(models.Model):
     name = models.CharField(verbose_name='название', unique=True, max_length=150)
     address = models.TextField(verbose_name='адрес', blank=True)
     phones = models.CharField(verbose_name='телефоны', blank=True, max_length=255)
+
+    def __str__(self):
+        return f'{self.name}'

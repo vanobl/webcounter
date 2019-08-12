@@ -23,3 +23,39 @@ def index(request):
     }
 
     return render(request, 'mainapp/base.html', context=content)
+
+# работа со складами
+class StockList(ListView):
+    model = Stock
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Склады'
+
+        return context
+
+
+class StockCreate(CreateView):
+    model = Stock
+    fields = '__all__'
+    template_name_suffix = '_create'
+    success_url = reverse_lazy('main:index')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Создание склада'
+
+        return context
+
+
+class StockUpdate(UpdateView):
+    model = Stock
+    fields = '__all__'
+    template_name_suffix = '_update'
+    success_url = reverse_lazy('main:index')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Редактирование склада'
+
+        return context
