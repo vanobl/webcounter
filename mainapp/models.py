@@ -8,3 +8,9 @@ class Stock(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+
+class Product(models.Model):
+    name = models.CharField(verbose_name='название', unique=True, max_length=255)
+    producing_country = models.CharField(verbose_name='страна производитель', max_length=255)
+    quantity = models.PositiveIntegerField()
