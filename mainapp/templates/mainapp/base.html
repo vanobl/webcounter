@@ -30,7 +30,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle {% if request.resolver_match.url_name == 'list_tovar' or request.resolver_match.url_name == 'list_artists' %} active {% endif %}" href="#" id="navbarDropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Журналы<span class="caret"></span></a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenu">
-                        <a class="dropdown-item" href="{#% url 'main:index' %#}">приходные документы</a>
+                        <a class="dropdown-item" href="{% url 'stock:comming' %}">приходные документы</a>
                         <a class="dropdown-item" href="{#% url 'main:products' %#}">расходные документы</a>
                         <a class="dropdown-item" href="{#% url 'main:products' %#}">перемещения</a>
                         <a class="dropdown-item" href="{#% url 'main:products' %#}">списания</a>
