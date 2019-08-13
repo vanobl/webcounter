@@ -13,8 +13,8 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.template.loader import render_to_string
 
-from mainapp.models import Stock
-from mainapp.forms import StockForm
+from mainapp.models import Stock, Product, Provider
+from mainapp.forms import StockForm, ProductForm, ProviderForm
 
 
 def index(request):
@@ -37,7 +37,8 @@ class StockList(ListView):
 
 class StockCreate(CreateView):
     model = Stock
-    fields = '__all__'
+    # fields = '__all__'
+    form_class = StockForm
     template_name_suffix = '_create'
     success_url = reverse_lazy('main:index')
 
@@ -50,12 +51,84 @@ class StockCreate(CreateView):
 
 class StockUpdate(UpdateView):
     model = Stock
-    fields = '__all__'
+    # fields = '__all__'
+    form_class = StockForm
     template_name_suffix = '_update'
     success_url = reverse_lazy('main:index')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Редактирование склада'
+
+        return context
+
+
+# работа с товарами
+class ProductList(ListView):
+    model = Product
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Товары'
+
+        return context
+
+class ProductCreate(CreateView):
+    model = Product
+    # fields = '__all__'
+    form_class = ProductForm
+    template_name_suffix = '_create'
+    success_url = reverse_lazy('main:products')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Создание продукта'
+
+        return context
+
+class ProductUpdate(UpdateView):
+    model = Product
+    form_class = ProductForm
+    template_name_suffix = '_update'
+    success_url = reverse_lazy('main:products')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Редактирование товара'
+
+        return context
+
+
+# работа с поставщиками
+class ProviderList(ListView):
+    model = Provider
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Поставщики'
+
+        return context
+
+class ProviderCreate(CreateView):
+    model = Provider
+    form_class = ProviderForm
+    template_name_suffix = '_create'
+    success_url = reverse_lazy('main:provider')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Создание поставщика'
+
+        return context
+
+class ProviderUpdate(UpdateView):
+    model = Provider
+    form_class = ProviderForm
+    template_name_suffix = '_update'
+    success_url = reverse_lazy('main:provider')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Редактирование поставщика'
 
         return context
