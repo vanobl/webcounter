@@ -1,11 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
-from mainapp.models import Product, Stock
+from mainapp.models import Product, Stock, Provider
 
 
-# таблица поступления
+# таблица документа
 class CommingInvoice(models.Model):
     stockid = models.ForeignKey(Stock, on_delete=models.PROTECT, related_name='stock_product', verbose_name='склад')
+    providerid = models.ForeignKey(Provider, on_delete=models.PROTECT, related_name='provider_product', verbose_name='поставщик')
     number = models.PositiveSmallIntegerField(verbose_name='номер', default=0)
 
 # таблица детализации поступления
