@@ -12,6 +12,7 @@
                     <th scope="col">Название</th>
                     <th scope="col">Страна</th>
                     <th scope="col">Артикул</th>
+                    <th scope="col">Объём</th>
                     <th scope="col">Действия</th>
                 </tr>
             </thead>
@@ -21,6 +22,7 @@
                         <td>{{ object.name }}</td>
                         <td>{{ object.producing_country }}</td>
                         <td>{{ object.vendor_code }}</td>
+                        <td>{{ object.get_volume|floatformat:2 }}</td>
                         <td>
                             <a title="редактировать товар" class="text-muted" style="margin-left: 5px;" href="{% url 'main:product_update' pk=object.pk %}"><i class="fas fa-pen bd-highlight"></i></a>
                             <!--<a title="удалить склад" class="text-muted" style="margin-left: 5px;" href="{#% url 'mainapp:works_delete' pk=object.pk %#}"><i class="fas fa-trash-alt"></i></a>-->

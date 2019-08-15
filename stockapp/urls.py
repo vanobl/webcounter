@@ -5,4 +5,5 @@ app_name = 'stock'
 
 urlpatterns = [
     path('comming/', stockapp.CommingInvoiceView.as_view(), name='comming'),
+    path('insert/', stockapp.insert_comming, name='insert')
 ]

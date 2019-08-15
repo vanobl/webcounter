@@ -11,6 +11,7 @@
                 <tr>
                     <th scope="col">Название</th>
                     <th scope="col">Адрес</th>
+                    <th scope="col">Объём</th>
                     <th scope="col">Действия</th>
                 </tr>
             </thead>
@@ -19,6 +20,7 @@
                     <tr>
                         <td>{{ object.name }}</td>
                         <td>{{ object.address }}</td>
+                        <td>{{ object.useful_volume }}</td>
                         <td>
                             <a title="редактировать склад" class="text-muted" style="margin-left: 5px;" href="{% url 'main:update' pk=object.pk %}"><i class="fas fa-pen bd-highlight"></i></a>
                             <!--<a title="удалить склад" class="text-muted" style="margin-left: 5px;" href="{#% url 'mainapp:works_delete' pk=object.pk %#}"><i class="fas fa-trash-alt"></i></a>-->

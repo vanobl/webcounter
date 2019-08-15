@@ -1,0 +1,21 @@
+{% extends "mainapp/base.html" %}
+    {% block content %}
+        <form method="post" class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+            {% csrf_token %}
+            <h4>Документ</h4>
+            {{ coming_invoice_form.management_form }}
+            {{ coming_invoice_form }}
+            <br><hr>
+    
+            <h4>Товары</h4>
+            {{ coming_invoice_items_form.management_form }}
+            {% for form in coming_invoice_items_form %}
+                <div class="form-group">
+                    {{ form }}
+                </div>
+            {% endfor %}
+            <hr>
+    
+            <input type="submit" class="btn btn-success float-left mybtn mb-4" value="Сохранить">
+        </form>
+    {% endblock content %}
