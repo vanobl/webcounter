@@ -49,7 +49,7 @@ def insert_comming(request):
     ComingFormSet = inlineformset_factory(CommingInvoice, CommingInvoiceItems, form=CommingInvoiceItemsForm, fk_name='invoiceid', fields=('productid', 'quantity',), extra=4, can_delete=False)
 
     if request.method == 'POST':
-        pass
+        coming_invoice_form = CommingInvoiceForm(request.POST)
     else:
         coming_invoice_form = CommingInvoiceForm()
         coming_invoice_items_form = ComingFormSet(instance=instance)
